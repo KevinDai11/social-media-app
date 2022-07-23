@@ -1,6 +1,6 @@
 const {model, Schema} = require('mongoose');
 
-const postSchema = new Schema({
+const postSchema = new Schema({ //create a new schema for post
     body: String,
     username: String,
     createdAt: String,
