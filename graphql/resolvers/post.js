@@ -61,7 +61,7 @@ module.exports = { Query: {
                 throw new Error(err);
                 console.log(err);
             }
-    },
+        },
 
     },
 
