@@ -18,6 +18,7 @@ module.exports = gql`
     }
     type Query {
         getPosts: [Post] #calls getPosts function in resolvers/post.js
+        getPost(postId: ID!): Post
     }
     input RegisterInput{ #input definition for Register new Users
         username: String!
@@ -28,6 +29,8 @@ module.exports = gql`
     type Mutation { #changes the database
         register(registerInput: RegisterInput): User! 
         login(username: String!, password: String!): User!
+        createPost(body: String!): Post
+        deletePost(postId: ID!): String!
     }
 `;
 
