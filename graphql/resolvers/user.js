@@ -8,7 +8,7 @@ const {UserInputError} = require('apollo-server');
 const {SECRET_KEY} = require('../../config');
 
 function generate_token(user) {
-    return jwt.sign({id: user.id, email: user.email, username: user.username}, SECRET_KEY, {expiresIn: '1h'});
+    return jwt.sign({id: user.id, email: user.email, username: user.username}, SECRET_KEY, {expiresIn: '24h'});
 }
 
 

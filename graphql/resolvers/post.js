@@ -1,4 +1,4 @@
-const {AuthenticationError} = require('apollo-server');
+const {AuthenticationError, UserInputError} = require('apollo-server');
 
 const Post = require('../../models/Post');
 const checkAuth = require('../../util/check_auth');
@@ -61,6 +61,33 @@ module.exports = { Query: {
                 throw new Error(err);
                 console.log(err);
             }
+        },
+
+
+        async likePost(_, {postId}, context) { //returns the mutation for likePost
+            const {username} = checkAuth(context);
+
+            const post = await Post.findById(postId); //get post from database
+
+            if(!post){ //check if post exists
+                throw new UserInputError('Post not found');
+            }
+
+            if(post.likes.find(like => like.username === username)){ //check if user has already liked post
+                //unlike post
+
+                const likeIndex = post.likes.findIndex(like => like.username === username);
+                post.likes.splice(likeIndex, 1);
+                
+
+            }
+            else{
+                //like post
+                post.likes.unshift({username, createdAt: new Date().toISOString()});
+            }
+            await post.save();
+            
+            return post;
         },
 
     },
