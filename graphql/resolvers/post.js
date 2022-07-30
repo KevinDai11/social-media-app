@@ -39,7 +39,7 @@ module.exports = { Query: {
     Mutation: {
         async createPost(_, {body}, context) { //returns the mutation for createPost
             const user = checkAuth(context);
-            if(args.body.trim() === ''){
+            if(body.trim() === ''){
                 throw new UserInputError('Empty post');
             } 
 
