@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Icon, Label, Image, Button} from 'semantic-ui-react';
+import {Card, Image, Button} from 'semantic-ui-react';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
 
@@ -37,7 +37,7 @@ export default function PostCard({post : {id, body, createdAt, username, likeCou
                     onClick={commentPost}
                     color='teal'
                     icon = {`${commentCount}` > 1 ? 'comments' : 'comment'}
-                    basic = {`${commentCount}` == 0}
+                    basic = {`${commentCount}` === 0}
                     label={{ basic: true, color: 'teal', pointing: 'left', content: `${commentCount}` }}
                 />
             </Card.Content>
