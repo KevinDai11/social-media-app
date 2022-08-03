@@ -12,6 +12,7 @@ import AuthRoute from './utils/AuthRouter';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import PostPage from './pages/PostPage';
 import MenuBar from './components/MenuBar';
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
               <Route exact path="/Register" element={<AuthRoute/>}>
                 <Route exact path = "/Register" element = {<Register/>}/>
               </Route>
+
+               <Route exact path = "/Posts/:postId" element = {<PostPage/>}/> 
             </Routes>
             
           </Container>
