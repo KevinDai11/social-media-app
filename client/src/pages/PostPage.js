@@ -1,20 +1,26 @@
 import React, {useContext} from  'react'
 import {gql, useQuery} from '@apollo/client'
 import {Card, Image, Grid, Button} from 'semantic-ui-react'
+import { useParams, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
 import LikeButton from '../components/LikeButton';
 import {AuthContext} from '../context/auth';
 import DeleteButton from '../components/DeleteButton';
 function PostPage(props) {
-    const postId = "62e83384471988d82e820179";
+    const postId = useParams().postId;
     const {user} = useContext(AuthContext);
+    const history = useNavigate();
 
     const {data} = useQuery(FETCH_POST_QUERY, {
         variables: {
             postId
         }   
     });
+
+    function deletePostCallBack() {
+        history('/');
+    }
     
     let postMarkup;
     if(!data) {
@@ -57,7 +63,7 @@ function PostPage(props) {
                                 label={{ basic: true, color: 'teal', pointing: 'left', content: `${commentCount}` }}
                             />
 
-                            {user && user.username === username && ( <DeleteButton postId = {id}/>)}
+                            {user && user.username === username && ( <DeleteButton postId = {id} callback = {deletePostCallBack}/>)}
                         </Card.Content>
                     </Card>
                 </Grid.Column>
