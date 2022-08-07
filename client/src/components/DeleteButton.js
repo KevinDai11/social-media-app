@@ -65,4 +65,10 @@ const DELETE_POST_MUTATION = gql`
 `;
 
 
+const DELETE_COMMENT_MUTATION = gql`
+    mutation deleteComment($postId: ID!, $commentId: ID!){
+        deleteComment(postId: $postId, commentId: $commentId)
+    }
+`;
+
 export default DeleteButton;
