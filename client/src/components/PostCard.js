@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import {AuthContext} from '../context/auth';
 import LikeButton from './LikeButton';
 import DeleteButton from './DeleteButton';
+import PopUp from '../utils/PopUp';
 
 export default function PostCard({post : {id, body, createdAt, username, likeCount, likes, commentCount, comments}}) {
 
@@ -28,14 +29,18 @@ export default function PostCard({post : {id, body, createdAt, username, likeCou
             </Card.Content>
             <Card.Content extra>
                 <LikeButton user = {user} post = {{id, likes, likeCount}}/>
-                <Button
-                    as = {Link}
-                    to = {`/posts/${id}`}
-                    color='teal'
-                    icon = {`${commentCount}` > 1 ? 'comments' : 'comment'}
-                    basic = {`${commentCount}` === 0}
-                    label={{ basic: true, color: 'teal', pointing: 'left', content: `${commentCount}` }}
-                />
+                <PopUp
+                    content = "Comment on post" >
+                        <Button
+                        as = {Link}
+                        to = {`/posts/${id}`}
+                        color='teal'
+                        icon = {`${commentCount}` > 1 ? 'comments' : 'comment'}
+                        basic = {`${commentCount}` === 0}
+                        label={{ basic: true, color: 'teal', pointing: 'left', content: `${commentCount}` }}
+                        />
+                </PopUp>
+                
                 {user && user.username === username && (
                     <DeleteButton postId = {id}/>
                 )}
