@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import PostPage from './pages/PostPage';
+import ProfilePage from './pages/ProfilePage';
 import MenuBar from './components/MenuBar';
 function App() {
   return (
@@ -33,7 +34,10 @@ function App() {
                 <Route exact path = "/Register" element = {<Register/>}/>
               </Route>
 
-               <Route exact path = "/Posts/:postId" element = {<PostPage/>}/> 
+              <Route exact path = "/Posts/:postId" element = {<PostPage/>}/> 
+             
+              <Route exact path = "/Profile/:username" element = {<ProfilePage/>}/>
+              
             </Routes>
             
           </Container>
