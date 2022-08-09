@@ -1,7 +1,7 @@
 import React, {useContext, useRef, useState} from  'react'
 import {gql, useQuery, useMutation} from '@apollo/client'
 import {Card, Form, Image, Grid, Button} from 'semantic-ui-react'
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
 import LikeButton from '../components/LikeButton';
@@ -56,7 +56,7 @@ function PostPage(props) {
                 <Grid.Column width={10}>
                     <Card fluid>
                         <Card.Content>
-                            <Card.Header>{username}</Card.Header>
+                            <Card.Header as = {Link} to = {`/profile/${username}`}>{username}</Card.Header>
                             <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
                             <Card.Description>
                                 {body}
@@ -114,7 +114,7 @@ function PostPage(props) {
                                 {user && user.username === comment.username && (
                                     <DeleteButton postId = {id} commentId = {comment.id}/>
                                 )}
-                                <Card.Header>{comment.username}</Card.Header>
+                                <Card.Header as = {Link} to = {`/profile/${comment.username}`}>{comment.username}</Card.Header>
                                 <Card.Meta>{moment(comment.createdAt).fromNow()}</Card.Meta>
                                 <Card.Description>{comment.body}</Card.Description>
                                 
