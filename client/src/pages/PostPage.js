@@ -7,7 +7,8 @@ import moment from 'moment';
 import LikeButton from '../components/LikeButton';
 import {AuthContext} from '../context/auth';
 import DeleteButton from '../components/DeleteButton';
-function PostPage(props) {
+import PopUp from '../utils/PopUp';
+function PostPage() {
     const postId = useParams().postId;
     const {user} = useContext(AuthContext);
     const history = useNavigate();
@@ -78,6 +79,17 @@ function PostPage(props) {
                             />
 
                             {user && user.username === username && ( <DeleteButton postId = {id} callback = {deletePostCallBack}/>)}
+                            {user && user.username === username && (
+                            <PopUp content = "Edit Post">
+                                <Button
+                                    icon = 'edit outline'
+                                    floated='right'
+                                    color = "blue"
+                                    as = {Link}
+                                    to = {`/edit/${id}`}
+                                    >
+                                </Button>
+                            </PopUp>)}
                         </Card.Content>
                     </Card>
                     {user && (

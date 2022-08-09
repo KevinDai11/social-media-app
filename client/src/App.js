@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PostPage from './pages/PostPage';
 import ProfilePage from './pages/ProfilePage';
+import EditPost from './pages/EditPost';
 import MenuBar from './components/MenuBar';
 function App() {
   return (
@@ -37,7 +38,11 @@ function App() {
               <Route exact path = "/Posts/:postId" element = {<PostPage/>}/> 
              
               <Route exact path = "/Profile/:username" element = {<ProfilePage/>}/>
+
               
+              <Route exact path = "/Edit/:postId" element = {<EditPost/>}/>
+              
+
             </Routes>
             
           </Container>

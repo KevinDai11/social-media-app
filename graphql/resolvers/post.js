@@ -94,6 +94,27 @@ module.exports = { Query: {
             return post;
         },
 
+        async editPost(_,{postId, body}, context) { //returns the mutation for editPost
+
+            const user = checkAuth(context);
+
+            if(body.trim() === ''){
+                throw new UserInputError('Empty post');
+            }
+
+            const post = await Post.findById(postId); 
+            if(!post){
+                throw new UserInputError('Post not found');
+            }
+            if(post.username != user.username){
+                throw new AuthenticationError('Not authorized');
+            }
+            post.body = body;
+            await post.save();
+            return post;
+        }
+
+
     },
 
 }

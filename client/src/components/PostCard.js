@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
-import {Card, Image, Button} from 'semantic-ui-react';
+import {Card, Image, Button, Grid} from 'semantic-ui-react';
 import moment from 'moment';
-import {NavLink, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import {AuthContext} from '../context/auth';
 import LikeButton from './LikeButton';
@@ -15,7 +15,7 @@ export default function PostCard({post : {id, body, createdAt, username, likeCou
     
     return(
         <Card fluid>
-            <Card.Content  as = {NavLink} to ={`/profile/${username}`}>
+            <Card.Content as = {Link} to ={`/profile/${username}`}>
                 <Image
                     floated='right'
                     size='mini'
@@ -27,11 +27,15 @@ export default function PostCard({post : {id, body, createdAt, username, likeCou
                 <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
             </Card.Content>
 
-            <Card.Content as ={Link} to ={`/posts/${id}`}>
+          
+                
+            <Card.Content as = {Link} to ={`/posts/${id}`}>
                 <Card.Description>
                     {body}
                 </Card.Description>
             </Card.Content>
+                
+
 
             <Card.Content extra>
                 <LikeButton user = {user} post = {{id, likes, likeCount}}/>
@@ -50,6 +54,17 @@ export default function PostCard({post : {id, body, createdAt, username, likeCou
                 {user && user.username === username && (
                     <DeleteButton postId = {id}/>
                 )}
+                {user && user.username === username && (
+                        <PopUp content = "Edit Post">
+                        <Button
+                            icon = 'edit outline'
+                            floated='right'
+                            color = "blue"
+                            as = {Link}
+                            to = {`/edit/${id}`}
+                            >
+                        </Button>
+                    </PopUp>)}
 
             </Card.Content>
         </Card>
