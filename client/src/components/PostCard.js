@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Card, Image, Button, Grid} from 'semantic-ui-react';
+import {Card, Image, Button} from 'semantic-ui-react';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
 
@@ -19,7 +19,7 @@ export default function PostCard({post : {id, body, createdAt, username, likeCou
                 <Image
                     floated='right'
                     size='mini'
-                    src='https://react.semantic-ui.com/images/avatar/large/molly.png'
+                    src='https://i.scdn.co/image/ab6775700000ee8597cebb58486061db5b9a29de'
                     />
                 <PopUp content = {`View ${username}'s Profile`}>
                         <Card.Header>{username}</Card.Header>

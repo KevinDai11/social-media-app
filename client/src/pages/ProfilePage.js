@@ -22,7 +22,7 @@ export default function ProfilePage(props){
                         <Image
                         floated='right'
                         size='mini'
-                        src='https://react.semantic-ui.com/images/avatar/large/molly.png'
+                        src='https://i.scdn.co/image/ab6775700000ee8597cebb58486061db5b9a29de'
                         />
                         <Card.Header>{user.username}</Card.Header>
                         <Card.Meta>Joined {moment(user.createdAt).format('MMMM Do YYYY')}</Card.Meta>

@@ -49,7 +49,7 @@ function PostPage() {
             <Grid.Row>
                 <Grid.Column width={2}>
                     <Image
-                        src = "https://react.semantic-ui.com/images/avatar/large/molly.png"
+                        src = "https://i.scdn.co/image/ab6775700000ee8597cebb58486061db5b9a29de"
                         size = "small"
                         float = "right"
                     />
